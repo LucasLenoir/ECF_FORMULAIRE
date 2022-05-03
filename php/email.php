@@ -13,7 +13,8 @@ $subject = $_POST['subject'];
 
 if (empty($errors)) {
     $result = mail($destinataire, $subject, $message);
-    print_r($result);
+    
     // print_r($_POST);
+    echo json_encode($result);
 
 }

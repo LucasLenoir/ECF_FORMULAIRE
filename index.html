@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite App</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -19,24 +19,41 @@
     <h1>Giga Chad formulaire</h1>
     <p class="" p>You tryin to get in touch ?</p>
     <div class="container">
+      <h2 id="succestext"></h2>
       <form id="form" action="#" method="POST" name="emailContact">
-        <input class="input" type="text" id="name" name="name" placeholder="My Name is" required>
-        <input class="input" type="tel" id="number" name="number" placeholder="My Number is" required>
-        <input class="input" type="email" id="email" name="email" placeholder="My Email is" required>
-        <input class="input" type="text" id="subject" name="subject" placeholder="Subject">
-        <textarea name="message" id="message" label="content" placeholder="Message" cols="30" rows="10"
-          required></textarea>
+        <article>
+          <input class="input" type="text" id="name" name="name" placeholder="My Name is" required>
+          <h3 id="errorName"></h3>
+        </article>
+        <article>
+          <input class="input" type="tel" id="number" name="number" placeholder="My Number is" required>
+          <h3 id="errorNumber"></h3>
+        </article>
+        <article>
+          <input class="input" type="email" id="email" name="email" placeholder="My Email is" required>
+          <h3 id="errorEmail"></h3>
+        </article>
+        <article>
+          <input class="input" type="text" id="subject" name="subject" placeholder="Subject">
+          <h3 id="errorSubject"></h3>
+        </article>
+        <article id="articleMessage">
+          <textarea name="message" id="message" label="content" placeholder="Message" cols="30" rows="10"
+            required></textarea>
+          <h3 id="errorMessage"></h3>
+        </article>
         <input id="submit" type="submit" value="submit">
-        <div id="success">
-          <strong>success, thanks for reaching out!!</strong>
 
-        </div>
+
+
+
+
       </form>
 
     </div>
   </div>
 
-  <script type="module" src="main.js"></script>
+  <script type="module" src="./js/main.js"></script>
 </body>
 
 </html>
