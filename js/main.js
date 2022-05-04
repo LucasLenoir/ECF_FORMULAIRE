@@ -11,7 +11,7 @@ function validateEmail() {
   if (email.value.match(/[a-z0-9]+@[a-z]+.[a-z]{2,3}/)) {
     return true;
   } else {
-    errorEmail.innerText = "mail format incorect";
+    errorEmail.textContent = "mail format incorect";
     return false;
   }
 }
@@ -28,19 +28,19 @@ function validateForm() {
   console.log(name.value);
   let error = false;
   if (name.value == "" || name.value.length < 3) {
-    errorName.innerText = "3 signs min";
+    errorName.textContent = "3 signs min";
     error = true;
   }
   if (number.value == "") {
-    errorNumber.innerText = "Please enter your number";
+    errorNumber.textContent = "Please enter your number";
     error = true;
   }
   if (message.value == "" || message.value.length < 12) {
-    errorMessage.innerText = " 12 signs min";
+    errorMessage.textContent = " 12 signs min";
     error = true;
   }
   if (subject.value == "") {
-    errorSubject.innerText = "Please enter the subject";
+    errorSubject.textContent = "Please enter the subject";
     error = true;
   }
 
@@ -60,11 +60,13 @@ form.addEventListener("submit", (e) => {
       .then((res) => res.json())
       .then((res) => {
         let success = document.getElementById("succestext");
+
         console.log(success);
         if ((res = true)) {
-          success.innerText = "Success, thanks for reaching out";
+          document.getElementById("form").reset();
+          success.textContent = "Success, thanks for reaching out";
         } else {
-          success.innerText = "Failed, form hasen't reached us";
+          success.textContent = "Failed, form hasen't reached us";
         }
       });
   }

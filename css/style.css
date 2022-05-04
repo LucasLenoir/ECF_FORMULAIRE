@@ -202,7 +202,12 @@ form .input::after{
 }
 #succestext{
   grid-area: 6/1/6/2;
-  color: #fff;
-  font-size: 12px;
+  color: #F4E04D;
+  font-size: 24px;
   place-self: center;
 }
+@media (max-width: 576px) {
+  #sucesstext {
+    font-size: 12px;
+  }
+  }
