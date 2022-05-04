@@ -4,6 +4,8 @@ const email = document.getElementById("email");
 let submit = document.getElementById("submit");
 let form = document.getElementById("form");
 let errors = document.querySelector("h3");
+let regSpec = /Ü-Ü/;
+let error = false;
 
 function validateEmail() {
   let errorEmail = document.querySelector("#errorEmail");
@@ -15,7 +17,6 @@ function validateEmail() {
     return false;
   }
 }
-
 function validateForm() {
   let name = document.getElementById("name");
   let number = document.getElementById("number");
@@ -26,29 +27,57 @@ function validateForm() {
   let errorMessage = document.querySelector("#errorMessage");
   let errorSubject = document.querySelector("#errorSubject");
   console.log(name.value);
+  let errorContent = "";
   let error = false;
-  if (name.value == "" || name.value.length < 3) {
-    errorName.textContent = "3 signs min";
-    error = true;
-  }
-  if (number.value == "") {
-    errorNumber.textContent = "Please enter your number";
-    error = true;
-  }
-  if (message.value == "" || message.value.length < 12) {
+
+  validateName();
+  validateNumber();
+
+  if (message.value.length < 12) {
     errorMessage.textContent = " 12 signs min";
     error = true;
   }
-  if (subject.value == "") {
-    errorSubject.textContent = "Please enter the subject";
+  if (subject.value.length < 3) {
+    errorSubject.textContent = "3 signs min";
     error = true;
   }
 
   return !error;
 }
+function validateName() {
+  let name = document.getElementById("name");
+  let errorName = document.querySelector("#errorName");
+  let errorContent = [];
+  if (!name.value.match(/[a-zA-Z]{3,}/)) {
+    errorContent.push("3 letters min");
+    error = true;
+  }
 
+  if (name.value.match(/[^a-zA-Z0-9]/)) {
+    errorContent.push("no special signs");
+    console.log("yoyo");
+    error = true;
+  }
+  errorName.textContent = errorContent.join(",");
+}
+function validateNumber() {
+  let number = document.getElementById("number");
+  let errorNumber = document.querySelector("#errorNumber");
+  let errorContent = [];
+  if (!number.value.match(/[0-9]{3,}/)) {
+    errorContent.push("3 digits min");
+    error = true;
+  }
+
+  if (number.value.match(/Ü-Ü/)) {
+    errorContent.push("no special signs");
+    error = true;
+  }
+  errorNumber.textContent = errorContent.join(",");
+}
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  validateForm();
   if (!validateEmail() || !validateForm()) {
     return false;
   } else {
